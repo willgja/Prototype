@@ -5,54 +5,54 @@ using DG.Tweening;
 
 public class PlayerController : MonoBehaviour
 {
-    public float moveSpeed = 6.0f;
-    public float maxSpeed = 10.0f;
-    public float rotateSpeed = 90.0f;
+    private Transform aviaoTransform;
+    public float speed = 10.0f;
 
-    private CharacterController controller;
-    private Vector3 movement;
-
-    public Transform _transform;
-    public bool isRotating = false;
-    private bool isFront = false;
-
-   
-
-    void Start()
+    private void Start()
     {
-        controller = GetComponent<CharacterController>();
-        _transform = GetComponent<Transform>();
-
-        
+        aviaoTransform = GetComponent<Transform>();
     }
 
-    void Update()
+    public void Move(Vector3 direction, float speed)
     {
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
+        aviaoTransform.Translate(direction * speed * Time.deltaTime);
+    }
 
-        Vector3 moveDirection = new Vector3(horizontal, 0.0f, vertical).normalized;
+    public void StopMovement()
+    {
+        aviaoTransform.Translate(Vector3.zero);
+    }
 
-        if (moveDirection.magnitude > 0.0f)
-        {
-            movement = moveDirection * moveSpeed;
-            movement = Vector3.ClampMagnitude(movement, maxSpeed);
-        }
-        else
-        {
-            movement = Vector3.zero;
-        }
-
-        movement.y = 0.0f;
-
+    private void Update()
+    {
         
 
-        if (transform.position.z <= -12f && !isFront)
+        if (Input.GetKey(KeyCode.UpArrow) && transform.position.z <= 12f )
         {
-            transform.DORotate(_transform.localRotation.eulerAngles + new Vector3(90, 0, 0), rotateSpeed);
-            isFront = true;
+            Move(Vector3.forward, speed);
+        }
+        else if (Input.GetKey(KeyCode.DownArrow) && transform.position.z >= -12f)
+        {
+            Move(Vector3.back, speed);
         }
 
-        controller.Move(movement * Time.deltaTime);
+        if (Input.GetKey(KeyCode.LeftArrow) && transform.position.x >= -13f)
+        {
+            Move(Vector3.left, speed);
+        }
+        else if (Input.GetKey(KeyCode.RightArrow) && transform.position.x <= 13f)
+        {
+            Move(Vector3.right, speed);
+        }
+
+        if (!Input.anyKey)
+        {
+            StopMovement();
+        }
     }
 }
+
+
+
+
+
