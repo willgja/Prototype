@@ -355,12 +355,16 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.VSCode.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEditor.UI.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEngine.UI.ref.dll"
+"Assets/QuickOutline/Scripts/Outline.cs"
 "Assets/Scripts/Bullet.cs"
 "Assets/Scripts/CameraShake.cs"
 "Assets/Scripts/Destructable.cs"
 "Assets/Scripts/Gun.cs"
 "Assets/Scripts/IslandRotate.cs"
+"Assets/Scripts/LevelManager.cs"
 "Assets/Scripts/PlayerController.cs"
+"Assets/Scripts/RotateCube.cs"
+"Assets/Scripts/Selection.cs"
 -langversion:9.0
 
 /deterministic
