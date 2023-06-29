@@ -359,6 +359,7 @@
 "Assets/Scripts/Bullet.cs"
 "Assets/Scripts/CameraShake.cs"
 "Assets/Scripts/Destructable.cs"
+"Assets/Scripts/EnemyAI.cs"
 "Assets/Scripts/Gun.cs"
 "Assets/Scripts/IslandRotate.cs"
 "Assets/Scripts/LevelManager.cs"
