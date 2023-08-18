@@ -1,2 +1,2 @@
 # Prototype
-Testes de gmaes
+Testes de games
